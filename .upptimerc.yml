@@ -1,0 +1,63 @@
+# Upptime Configuration — B&H Bio Uptime Monitor
+# https://upptime.js.org
+
+sites:
+  - name: "B&H Bio — Main Site"
+    url: "https://www.bandhbio.com"
+    max_redirects: 3
+    __dangerous__skip_tls_verification: false
+
+  - name: "B&H Bio — Pages Dev"
+    url: "https://bh-bio.pages.dev"
+    max_redirects: 3
+
+  - name: "B&H Bio — Products"
+    url: "https://www.bandhbio.com/products"
+    max_redirects: 3
+
+  - name: "B&H Bio — Training Portal"
+    url: "https://www.bandhbio.com/training"
+    max_redirects: 3
+
+  - name: "B&H Bio — Contact"
+    url: "https://www.bandhbio.com/contact"
+    max_redirects: 3
+
+status-website:
+  theme: ocean
+  cname: status.bandhbio.com
+  logoUrl: https://www.bandhbio.com/favicon.ico
+  name: B&H Bio Status
+  introTitle: "**B&H Bio** — System Status"
+  introMessage: "Uptime monitoring for B&H Bio systems and services."
+  navbar:
+    - title: Status
+      href: /
+    - title: B&H Bio
+      href: https://www.bandhbio.com
+
+# Monitor scheduling
+assignees:
+  - csqhuston-coder
+
+# Notification settings
+notifications:
+  - type: email
+    to: csqhuston@gmail.com
+
+# Skip SSL check during setup (disable once working)
+skipTlsVerification: false
+
+# Response time thresholds (ms)
+responseTime10Min: 5
+responseTime100Min: 10
+
+# Upptime settings
+workflowSchedule:
+  graphs: "0 0 * * *"
+  responseTime: "0 * * * *"
+  staticSite: "0 1 * * *"
+  summary: "0 0 * * *"
+  updateTemplate: "0 0 * * *"
+  updates: "0 3 * * *"
+  uptime: "*/5 * * * *"

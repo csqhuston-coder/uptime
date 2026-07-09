@@ -1,0 +1,102 @@
+name: Upptime
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  repository_dispatch:
+    types: [upptime]
+  workflow_dispatch:
+
+jobs:
+  release-assets:
+    name: Upptime
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Generate Upptime data
+        uses: upptime/uptime-monitor@v1.40.0
+        with:
+          command: "update"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+
+  response-time:
+    name: Response Time
+    needs: [release-assets]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Generate graphs
+        uses: upptime/uptime-monitor@v1.40.0
+        with:
+          command: "response-time"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+
+  static-site:
+    name: Static Site
+    needs: [release-assets]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Build static site
+        uses: upptime/uptime-monitor@v1.40.0
+        with:
+          command: "static-site"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+
+  summary:
+    name: Summary
+    needs: [response-time, static-site]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Generate summary
+        uses: upptime/uptime-monitor@v1.40.0
+        with:
+          command: "summary"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+
+  update-template:
+    name: Update Template
+    needs: [summary]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Update template
+        uses: upptime/uptime-monitor@v1.40.0
+        with:
+          command: "update-template"
+        env:
+          GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
