@@ -1,31 +1,37 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# B&H Bio + Ventures — Uptime monitoring & status page
+owner: csqhuston-coder
+repo: uptime
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Test Broken Site
-    url: https://thissitedoesnotexist.koj.co
+  - name: B&H Bio
+    url: https://bandhbio.com
+  - name: B&H Bio (www)
+    url: https://www.bandhbio.com
+  - name: Whoreologist
+    url: https://whoreologist.com
+  - name: ZeroSnipe
+    url: https://www.zerosided.com
+  - name: BLPCK
+    url: https://blpck.com
+  - name: Exotic Overlanding
+    url: https://www.exoticoverlanding.com
+  - name: Belivor
+    url: https://www.belivor.com
+  - name: Charly's Angels
+    url: https://www.charlysangelsofficial.com
+  - name: Alfred AIE
+    url: https://www.alfredaie.com
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
+  cname: status.bandhbio.com
   logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  name: B&H Bio Status
+  introTitle: "**B&H Bio** uptime monitor and status page"
+  introMessage: Real-time uptime monitoring for B&H Bio and related ventures. Powered by Upptime (GitHub Actions).
   navbar:
     - title: Status
       href: /
+    - title: B&H Bio
+      href: https://bandhbio.com
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
